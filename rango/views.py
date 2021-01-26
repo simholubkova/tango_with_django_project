@@ -17,13 +17,6 @@ def index(request):
     return render(request, 'rango/index.html', context=context_dict)
 
 def about(request):
-    # Construct a dictionary to pass to the template engine as its context
-    # Mote the key boldmessage matches to {{ boldmessage }} in the template!
-    # context_dict = {'boldmessage': 'Crunchy, creamy, cookie, candy, cupcake!'}
-
-    # Return a rendered response to send to the client
-    # We mke use of the shortcut function to make out lives easier
-    # Note that the first parameter is the template we wish to use
     return render(request, 'rango/about.html')
 
 
@@ -78,9 +71,7 @@ def add_page(request, category_name_slug):
                 page.views = 0
                 page.save()
 
-                return redirect(reverse('rango:show_category',
-                                        kwargs={'category_name_slug':
-                                                category_name_slug}))
+                return redirect(reverse('rango:show_category', kwargs={'category_name_slug': category_name_slug}))
         else:
             print(form.errors)
 
